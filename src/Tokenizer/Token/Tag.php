@@ -33,9 +33,10 @@ class Tag
         $this->line = $line;
         $this->name = $name;
         $this->arguments = $arguments;
-        foreach ($arguments as $argument) {
+        foreach ($arguments as $key => $argument) {
             if (isset($argument['string'])) {
                 $this->string = $argument['string'];
+                unset($arguments[$key]);
                 break;
             }
         }
