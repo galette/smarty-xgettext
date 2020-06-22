@@ -12,4 +12,16 @@
  * that were distributed with this source code.
  */
 
+/**
+ * Maps _T Galette's function
+ *
+ * @param string $string String to translate
+ *
+ * @return string
+ */
+function _T($string)
+{
+    return $string;
+}
+
 require_once __DIR__ . '/../vendor/autoload.php';
