@@ -22,6 +22,9 @@ class Tag
     /** @var string */
     public $name;
 
+    /** @var string */
+    public $string;
+
     /** @var string[] */
     public $arguments;
 
@@ -30,5 +33,11 @@ class Tag
         $this->line = $line;
         $this->name = $name;
         $this->arguments = $arguments;
+        foreach ($arguments as $argument) {
+            if (isset($argument['string'])) {
+                $this->string = $argument['string'];
+                break;
+            }
+        }
     }
 }

@@ -3,13 +3,13 @@ line numbers test
 currently seems the line numbers come from closing tag line,
 previous script used starting tag numner.
 
-{t}block on same line{/t}
+{_T}block on same line{/_T}
 
-{t}
-block starts on next, line and ends there{/t}
+{_T}
+block starts on next, line and ends there{/_T}
 
-{t}
+{_T}
 block where start and end and text all on different lines
-{/t}
+{/_T}
 
 end

@@ -129,6 +129,6 @@ class TranslateTag
             $args[] = sprintf('%s=%s', $key, var_export($value, 1));
         }
 
-        return sprintf("{t %s}%s{/t}\n", implode(' ', $args), $this->message);
+        return sprintf("{_T string=\"%s\" %s}\n", $this->message, implode(' ', $args));
     }
 }

@@ -43,8 +43,8 @@ class TokenParserTest extends TestCase
             array(
                 '1.html',
                 array(
-                    "{t name='sagi'}my name is %1{/t}\n",
-                    "{t 1='one' 2='two ' 3='three'}The 1st parameter is %1, the 2nd is %2\nand the 3nd %3.{/t}\n",
+                    "{_T string=\"my name is %1\" name='sagi'}\n",
+                    "{_T string=\"The 1st parameter is %1, the 2nd is %2\nand the 3nd %3.\" 1='one' 2='two ' 3='three'}\n",
                 )
             ),
         );

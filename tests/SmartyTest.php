@@ -50,8 +50,8 @@ class SmartyTest extends TestCase
             ),
 
             /*
-             * Smarty parses nested blocks ("t" inside "reply_button"):
-             * {reply_button title="{t}reply as email{/t}"}
+             * Smarty parses nested blocks ("_T" inside "reply_button"):
+             * {reply_button title="{_T string="reply as email"}"}
              */
             'translation_in_argument' => array(
                 'translation_in_argument.tpl',
