@@ -65,7 +65,8 @@ function smarty_function__T($params, &$smarty)
     } else {
         $ret = _T($string, $domain, $notrans);
     }
-    if (isset($escape)) {
+
+    if (isset($escape) && $escape != 'no') {
         //replace insecable spaces
         $ret = str_replace('&nbsp;', ' ', $ret);
         //for the moment, only 'js' type is know
