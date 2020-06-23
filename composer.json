@@ -1,17 +1,17 @@
 {
-	"name": "smarty-gettext/tsmarty2c",
+	"name": "galette/tsmarty2c",
 	"description": "Smarty Gettext Translation String Ripper",
-	"homepage": "https://github.com/smarty-gettext/tsmarty2c",
+	"homepage": "https://github.com/galette/tsmarty2c",
 	"license": "BSD",
 	"authors": [
 		{
 			"name": "Elan Ruusamäe",
 			"email": "glen@pld-linux.org"
-		}
+		}, {
+            "name': "Johan Cwiklinski",
+            "email": "trasher@x-tnd.be"
+        }
 	],
-	"support": {
-		"issues": "https://github.com/smarty-gettext/tsmarty2c/issues"
-	},
 	"bin": [
 		"bin/tsmarty2c.php"
 	],

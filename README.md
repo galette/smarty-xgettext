@@ -1,5 +1,7 @@
 # tsmarty2c.php - the command line utility
 
+## Fork for Galette; which uses a function, not a block.
+
 `tsmarty2c.php` - A command line utility that rips gettext strings from smarty source files and converts them to `.pot` (PO-Template).
 
 This utility will scan templates for `{t}...{/t}` placeholders for translation strings
