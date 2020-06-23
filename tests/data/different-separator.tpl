@@ -5,7 +5,7 @@ https://github.com/smarty-gettext/smarty-gettext/issues/20
 I use [% and %] as my delimiters.
 
 I like to write my translations as following:
-[% _T %]Now with 20% discount![% /_T %]
+[% _T string="Now with 20% discount!" %]
 
 I changed the used regular expression to work around this issue:
 
@@ -20,6 +20,6 @@ This issue is kinda related to #1 and #15
 
 *}
 
-[% _T %]Now with 20% discount![% /_T %]
+[% _T string="Now with 20% discount!" %]
 
 {* EOF *}

@@ -24,7 +24,6 @@ class SeparatorsTest extends TestCase
     /**
      * @see https://github.com/smarty-gettext/smarty-gettext/issues/20
      */
-    /* block is not supported
     public function testDifferentSeparators()
     {
         $p = $this->parseTemplate('different-separator.tpl', function (PotFile $p) {
@@ -35,8 +34,8 @@ class SeparatorsTest extends TestCase
         $entries = $p->getPoFile()->getEntries();
         $this->assertCount(1, $entries);
 
-        /** @var PoEntry $e *
+        /** @var PoEntry $e */
         $e = current($entries);
         $this->assertNotNull($e->get(PoTokens::MESSAGE), "Now with 20% discount!");
-    }*/
+    }
 }

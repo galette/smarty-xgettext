@@ -47,5 +47,6 @@ class QuoteParserTest extends TestCase
             'bool' => 'false',
         );
         $this->assertEquals($exp, $args);
+        $this->assertEquals($tags[0]->message, '"text"');
     }
 }
