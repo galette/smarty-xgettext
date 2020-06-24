@@ -23,12 +23,14 @@ class TokenizerTest extends TestCase
     public function test1()
     {
         $tokens = $this->getTokens(__DIR__ . '/data/1.html');
-        $this->assertCount(2, $tokens);
+        $this->assertCount(3, $tokens);
 
         // {_T string="my name is %1" name="sagi"}
         $this->assertEquals('_T', $tokens[0]->name);
         $this->assertEquals('"my name is %1"', $tokens[0]->string);
         $this->assertEquals('"sagi"', $tokens[0]->arguments[1]['name']);
+
+        $this->assertEquals('assign', $tokens[2]->name);
     }
 
     /**
