@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the smarty-gettext/tsmarty2c package.
+ * This file is part of the galette/smarty-gettext package.
  *
- * @copyright (c) Elan Ruusamäe
+ * @copyright (c) 2017 Elan Ruusamäe
+ * @copyright (c) 2020 The Galette Team
  * @license BSD
- * @see https://github.com/smarty-gettext/tsmarty2c
+ * @see https://github.com/galette/smarty-gettext
  *
  * For the full copyright and license information,
- * please see the LICENSE and AUTHORS files
- * that were distributed with this source code.
+ * please see the LICENSE file distributed with this source code.
  */
 
 namespace SmartyGettext\Tokenizer\Tag;
@@ -129,6 +129,6 @@ class TranslateTag
             $args[] = sprintf('%s=%s', $key, var_export($value, 1));
         }
 
-        return sprintf("{t %s}%s{/t}\n", implode(' ', $args), $this->message);
+        return sprintf("{_T string='%s' %s}\n", $this->unquote($this->message), implode(' ', $args));
     }
 }

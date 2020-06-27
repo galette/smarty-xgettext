@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the smarty-gettext/tsmarty2c package.
+ * This file is part of the galette/smarty-gettext package.
  *
- * @copyright (c) Elan Ruusamäe
+ * @copyright (c) 2017 Elan Ruusamäe
+ * @copyright (c) 2020 The Galette Team
  * @license BSD
- * @see https://github.com/smarty-gettext/tsmarty2c
+ * @see https://github.com/galette/smarty-gettext
  *
  * For the full copyright and license information,
- * please see the LICENSE and AUTHORS files
- * that were distributed with this source code.
+ * please see the LICENSE file distributed with this source code.
  */
 
 namespace SmartyGettext\Test;
@@ -43,8 +43,8 @@ class TokenParserTest extends TestCase
             array(
                 '1.html',
                 array(
-                    "{t name='sagi'}my name is %1{/t}\n",
-                    "{t 1='one' 2='two ' 3='three'}The 1st parameter is %1, the 2nd is %2\nand the 3nd %3.{/t}\n",
+                    "{_T string='my name is %1' name='sagi'}\n",
+                    "{_T string='The 1st parameter is %1, the 2nd is %2\nand the 3nd %3.' 1='one' 2='two ' 3='three'}\n",
                 )
             ),
         );

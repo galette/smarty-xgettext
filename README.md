@@ -1,41 +1,39 @@
-# tsmarty2c.php - the command line utility
+# Smarty xgettext
 
-## Fork for Galette; which uses a function, not a block.
+A command line utility to extract translations source strings from [Smarty templates](https://smarty.net) to a PO-Template (`.pot`) file.
 
-`tsmarty2c.php` - A command line utility that rips gettext strings from smarty source files and converts them to `.pot` (PO-Template).
+This utility will scan templates for `{_T string=""}` placeholders for translation strings and output a `.pot` file (`.po` template).
 
-This utility will scan templates for `{t}...{/t}` placeholders for translation strings
-and output a `.pot` file (`.po` template).
+Features:
+* scan files and directories recursively,
+* inlude original string location,
+* supports plurals,
+* supports contexts,
+* supports comments (to be done)
 
 Usage:
 
-    ./vendor/bin/tsmarty2c.php -o template.pot <filename or directory> <file2> <...>
+    ./vendor/bin/smarty-xgettext -o smarty.pot <filename or directory> <file2> <...>
 
-If a parameter is a directory, the template files within will
-be parsed, recursively.
+    find templates -name '*.tpl.html' -o -name '*.tpl.text' -o -name '*.tpl.js' -o -name '*.tpl.xml' | xargs ./vendor/bin/smarty-xgettext -o smarty.pot
 
-In output special PO tags are added that inform about location of extracted translation. Most of the PO edit tools can respect that information.
+If a parameter is a directory, the template files within will be parsed, recursively.
 
-If you wish to scan also `.php` or `.phtml` files for native gettext calls, you may wish to combine result of `tsmarty2c` and `xgettext` calls:
-
-```
-./vendor/bin/tsmarty2c.php -o smarty.pot ...
-xgettext --add-comments=TRANSLATORS: --keyword=gettext --keyword=_  --output=code.pot ...
-msgcat -o template.pot code.pot smarty.pot
-rm -f code.pot smarty.pot
-```
-
-By default `tsmarty2c` scans for `.tpl` files, if you wish to use other files, you can use `xargs` in unix:
+If you want to combine Smarty translations with your PHP ones, you can combine results with the `msgcat` command:
 
 ```
-find templates -name '*.tpl.html' -o -name '*.tpl.text' -o -name '*.tpl.js' -o -name '*.tpl.xml' | xargs tsmarty2c.php -o smarty.pot
+./vendor/bin/smarty-xgettext.php -o smarty.pot /path/to/source/templates
+xgettext /path/to/source/php --keyword=_T --output=php.pot
+msgcat -o project.pot --use-first php.pot smarty.pot
 ```
 
-See how it's done in [Eventum](https://github.com/eventum/eventum/blob/master/localization/Makefile) project.
 
 ## Developing
 
 1. clone this repository
 2. [get composer](https://getcomposer.org/download/)
 3. install composer dependencies: `php composer.phar install`
-4. start using it: `php bin/tsmarty2c.php`
+4. start using it: `php bin/smarty-xgettext`
+
+Initially based on [tsmatry2c](https://github.com/smarty-gettext/tsmarty2c).
+Original project (which seems not maintained) was using Smarty blocks while Galette relies on a function.

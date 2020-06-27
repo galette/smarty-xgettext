@@ -4,13 +4,13 @@
 /*
  * This file is part of the smarty-gettext package.
  *
- * @copyright (c) Elan Ruusamäe
+ * @copyright (c) 2017 Elan Ruusamäe
+ * @copyright (c) 2020 The Galette Team
  * @license BSD
- * @see https://github.com/smarty-gettext/tsmarty2c
+ * @see https://github.com/galette/smarty-xgettext
  *
  * For the full copyright and license information,
- * please see the LICENSE and AUTHORS files
- * that were distributed with this source code.
+ * please see the LICENSE file distributed with this source code.
  */
 
 use SmartyGettext\Console\Application;
@@ -45,6 +45,6 @@ if (!$loader()) {
     );
 }
 
-$app = new Application('Smarty Gettext Translation String Ripper', '0.1.0');
+$app = new Application('Smarty xgettext', '1.0.0');
 $app->setDefaultCommand('extract', true);
 $app->run();

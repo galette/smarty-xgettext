@@ -3,9 +3,9 @@ a translation, which contains if-statement
 
 this is of course better written as:
   {if $smarty.post.cat == 'remove'}
-    {t}Thank you, the emails were removed successfully{/t}
+    {_T string="Thank you, the emails were removed successfully"}
   {else}
-    {t}Thank you, the emails were restored successfully{/t}
+    {_T string="Thank you, the emails were restored successfully"}
   {/if}
 
 while it appears correctly in output,
@@ -13,7 +13,7 @@ sentences should not be split to words according to English language rules.
 
 *}
 
-{t}Thank you, the emails were {if $cat == 'remove'}removed{else}restored{/if} successfully{/t}
+{_T string="Thank you, the emails were {if $cat == 'remove'}removed{else}restored{/if} successfully"}
 
 {*
 The above gets parsed as:

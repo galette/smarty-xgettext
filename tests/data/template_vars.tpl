@@ -1,11 +1,11 @@
 {if $issue_id}
-    {t escape=no 1=$issue_id}View Note Details (Associated with Issue <a href="{$core.rel_url}view.php?id=%1">#%1</a>){/t}
+    {_T 1=$issue_id string="View Note Details (Associated with Issue <a href=\"{$core.rel_url}view.php?id=%1\">#%1</a>)"}
 {else}
-    {t}View Note Details{/t}
+    {_T string="View Note Details"}
 {/if}
 
 {*
 this doesn't parse well, use this instead:
 
-{t escape=no 1=$issue_id 2="{$core.rel_url}view.php?id=$issue_id"}View Note Details (Associated with Issue <a href="%2">#%1</a>){/t}
+{_T escape=no 1=$issue_id 2="{$core.rel_url}view.php?id=$issue_id" string="View Note Details (Associated with Issue <a href=\"%2\">#%1</a>)"}
 *}

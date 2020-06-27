@@ -1,5 +1,5 @@
 {*
-there's nested {t} inside {reply_button}
+there's nested {_T} inside {reply_button}
 
 how it's supposed to work?
 old pattern parser was able to find this one!
@@ -15,4 +15,4 @@ how does smarty really handle this?
     {/strip}
 {/function}
 
-{reply_button title="{t}reply as email{/t}" class="reply_as_email"}
+{reply_button title="{_T string="reply as email"}" class="reply_as_email"}

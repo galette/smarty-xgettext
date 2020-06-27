@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the smarty-gettext/tsmarty2c package.
+ * This file is part of the galette/smarty-gettext package.
  *
- * @copyright (c) Elan Ruusamäe
+ * @copyright (c) 2017 Elan Ruusamäe
+ * @copyright (c) 2020 The Galette Team
  * @license BSD
- * @see https://github.com/smarty-gettext/tsmarty2c
+ * @see https://github.com/galette/smarty-gettext
  *
  * For the full copyright and license information,
- * please see the LICENSE and AUTHORS files
- * that were distributed with this source code.
+ * please see the LICENSE file distributed with this source code.
  */
 
 namespace SmartyGettext\Tokenizer\Token;
@@ -22,6 +22,9 @@ class Tag
     /** @var string */
     public $name;
 
+    /** @var string */
+    public $string;
+
     /** @var string[] */
     public $arguments;
 
@@ -29,6 +32,13 @@ class Tag
     {
         $this->line = $line;
         $this->name = $name;
+        foreach ($arguments as $key => $argument) {
+            if (isset($argument['string'])) {
+                $this->string = $argument['string'];
+                unset($arguments[$key]);
+                break;
+            }
+        }
         $this->arguments = $arguments;
     }
 }

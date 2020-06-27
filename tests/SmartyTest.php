@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the smarty-gettext/tsmarty2c package.
+ * This file is part of the galette/smarty-gettext package.
  *
- * @copyright (c) Elan Ruusamäe
+ * @copyright (c) 2017 Elan Ruusamäe
+ * @copyright (c) 2020 The Galette Team
  * @license BSD
- * @see https://github.com/smarty-gettext/tsmarty2c
+ * @see https://github.com/galette/smarty-gettext
  *
  * For the full copyright and license information,
- * please see the LICENSE and AUTHORS files
- * that were distributed with this source code.
+ * please see the LICENSE file distributed with this source code.
  */
 
 namespace SmartyGettext\Test;
@@ -50,8 +50,8 @@ class SmartyTest extends TestCase
             ),
 
             /*
-             * Smarty parses nested blocks ("t" inside "reply_button"):
-             * {reply_button title="{t}reply as email{/t}"}
+             * Smarty parses nested blocks ("_T" inside "reply_button"):
+             * {reply_button title="{_T string="reply as email"}"}
              */
             'translation_in_argument' => array(
                 'translation_in_argument.tpl',
@@ -72,7 +72,7 @@ class SmartyTest extends TestCase
             'template_vars' => array(
                 'template_vars.tpl',
                 array('issue_id' => 1, 'core' => array('rel_url' => '/')),
-                'View Note Details (Associated with Issue <a href="/view.php?id=1">#1</a>)',
+                'View Note Details (Associated with Issue <a href="/view.php?id=%1">#%1</a>)',
             ),
         );
     }
