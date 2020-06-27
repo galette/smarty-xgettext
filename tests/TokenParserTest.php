@@ -47,6 +47,13 @@ class TokenParserTest extends TestCase
                     "{_T string='The 1st parameter is %1, the 2nd is %2\nand the 3nd %3.' 1='one' 2='two ' 3='three'}\n",
                 )
             ),
+            array(
+                'comments.tpl',
+                array(
+
+                    "{_T string='%member email' comment='%member will be replaced with members email address'}\n"
+                )
+            )
         );
     }
 

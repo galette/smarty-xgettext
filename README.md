@@ -9,7 +9,7 @@ Features:
 * inlude original string location,
 * supports plurals `{_T string="singular" plural="plural"}`,
 * supports contexts `{_T string="string" context="mycontext"}`,
-* supports comments (to be done) `{_T string="string" comment="Explanation"}`
+* supports comments `{_T string="string" comment="Explanation"}`
 
 Usage:
 
