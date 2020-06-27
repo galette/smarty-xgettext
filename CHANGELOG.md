@@ -1,8 +1,14 @@
-# Smarty Gettext Translation String Ripper
+# Smarty xgettext
 
 When writing entries, refer to [Keep a CHANGELOG](http://keepachangelog.com/) for guidelines.
 
 All notable changes to this project will be documented in this file.
+
+## [1.0.0] - 2020-06-27
+
+- Complete rework for Galette needs
+
+[1.0.0]: https://github.com/galette/smarty-xgettext/compare/0.1.1...1.0.0
 
 ## [0.1.2] - 2017-11-12
 

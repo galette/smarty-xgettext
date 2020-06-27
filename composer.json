@@ -1,7 +1,7 @@
 {
-	"name": "galette/tsmarty2c",
-	"description": "Smarty Gettext Translation String Ripper",
-	"homepage": "https://github.com/galette/tsmarty2c",
+	"name": "galette/smarty-xgettext",
+	"description": "Smarty xgettext features",
+	"homepage": "https://github.com/galette/smarty-xgettext",
 	"license": "BSD-3-Clause",
 	"authors": [
 		{
@@ -13,7 +13,7 @@
         }
 	],
 	"bin": [
-		"bin/tsmarty2c.php"
+		"bin/smarty-xgettext"
 	],
 	"autoload": {
 		"psr-4": {
@@ -27,11 +27,6 @@
         "files": [
             "function._T.php"
         ]
-	},
-	"config": {
-		"platform": {
-			"php": "5.5.9"
-		}
 	},
 	"require": {
 		"geekwright/po": "^1.0",
