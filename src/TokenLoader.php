@@ -71,6 +71,10 @@ class TokenLoader extends PoInitSmarty
             $entry->set(PoTokens::PLURAL, $this->escapeForPo($plural));
         }
 
+        if ($comment = $tag->getComment()) {
+            $entry->set(PoTokens::TRANSLATOR_COMMENTS, $this->escapeForPo($comment));
+        }
+
         return $entry;
     }
 

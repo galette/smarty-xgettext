@@ -16,9 +16,11 @@ namespace SmartyGettext\Tokenizer\Tag;
 
 class TranslateTag
 {
-    const CONTEXT = 'context';
+    public const CONTEXT = 'context';
 
-    const PLURAL = 'plural';
+    public const PLURAL = 'plural';
+
+    public const COMMENT = 'comment';
 
     /** @var string */
     public $message;
@@ -88,6 +90,18 @@ class TranslateTag
     {
         if (isset($this->arguments[self::PLURAL])) {
             return $this->arguments[self::PLURAL];
+        }
+
+        return null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getComment()
+    {
+        if (isset($this->arguments[self::COMMENT])) {
+            return $this->arguments[self::COMMENT];
         }
 
         return null;
