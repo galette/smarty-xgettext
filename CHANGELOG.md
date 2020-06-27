@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Complete rework for Galette needs
 
-[1.0.0]: https://github.com/galette/smarty-xgettext/compare/0.1.1...1.0.0
+[1.0.0]: https://github.com/galette/smarty-xgettext/compare/0.1.2...1.0.0
 
 ## [0.1.2] - 2017-11-12
 
