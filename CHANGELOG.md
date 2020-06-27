@@ -4,6 +4,12 @@ When writing entries, refer to [Keep a CHANGELOG](http://keepachangelog.com/) fo
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2020-06-27
+
+- Support for comments
+
+[1.1.0]: https://github.com/galette/smarty-xgettext/compare/1.0.0...1.1.0
+
 ## [1.0.0] - 2020-06-27
 
 - Complete rework for Galette needs
