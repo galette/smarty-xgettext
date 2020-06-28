@@ -55,9 +55,11 @@ class TokenParser
             if ($token instanceof Token\Tag && $token->name === '_T') {
                 $tags[] = new TranslateTag($token->string, $token->arguments, $token->line);
                 $topen = $token;
-            } elseif ($topen &&
-                ($token instanceof Token\Tag && $token->name === 'Tclose')
-                && $previous instanceof Token\Text
+            } elseif (
+                $topen &&
+                ($token instanceof Token\Tag &&
+                $token->name === 'Tclose') &&
+                $previous instanceof Token\Text
             ) {
                 $tags[] = new TranslateTag($previous->text, $topen->arguments, $topen->line);
                 $topen = null;

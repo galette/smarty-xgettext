@@ -30,7 +30,8 @@ class ParserTest extends TestCase
         $this->assertNotNull($res);
     }
 
-    public function testTranslationWithCondition() {
+    public function testTranslationWithCondition()
+    {
         $p = $this->parseTemplate('translation_with_condition.tpl');
         $this->assertNotNull($p);
 

@@ -1,6 +1,4 @@
 language: php
-dist: trusty
-
 
 php:
   - 7.2
@@ -19,6 +17,10 @@ cache:
     - vendor
 
 install:
-  - composer install --no-interaction --prefer-source
+  - composer install --optimize-autoloader
+
+script:
+  - ./vendor/bin/phpcs -n -p --standard=PSR12 ./src ./tests ./*.php ./bin
+  - ./vendor/bin/phpunit
 
 # vim:ts=2:sw=2:et

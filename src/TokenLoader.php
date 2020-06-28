@@ -34,7 +34,7 @@ class TokenLoader extends PoInitSmarty
     public function loadTags($tags, $refName)
     {
         if (!($this->poFile instanceof PoFile)) {
-            $this->poFile = new PoFile;
+            $this->poFile = new PoFile();
         }
 
         foreach ($tags as $tag) {
@@ -59,7 +59,7 @@ class TokenLoader extends PoInitSmarty
             throw new InvalidArgumentException('Empty message');
         }
 
-        $entry = new PoEntry;
+        $entry = new PoEntry();
         $entry->add(PoTokens::REFERENCE, $refName . ':' . $tag->getLine());
         $entry->set(PoTokens::MESSAGE, $this->escapeForPo($message));
 

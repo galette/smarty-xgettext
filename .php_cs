@@ -24,18 +24,17 @@ For the full copyright and license information,
 please see the LICENSE file distributed with this source code.
 EOF;
 
-Symfony\CS\Fixer\Contrib\HeaderCommentFixer::setHeader($header);
-
-$finder = Symfony\CS\Finder\DefaultFinder::create()
+$finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
     ->exclude('vendor')
     ->exclude('templates_c');
 
-return Symfony\CS\Config\Config::create()
+return PhpCsFixer\Config::create()
     ->setUsingCache(true)
-    ->level(Symfony\CS\FixerInterface::NONE_LEVEL)
-    ->fixers(array(
-        'linefeed',
+    //->level(Symfony\CS\FixerInterface::NONE_LEVEL)
+    ->setRules(array(
+        'header_comment' => array('header' => $header),
+        /*'linefeed',
         'trailing_spaces',
         'unused_use',
         '-short_tag',
@@ -48,6 +47,6 @@ return Symfony\CS\Config\Config::create()
         'controls_spaces',
         'elseif',
         '-eof_ending',
-        'header_comment',
+        'header_comment',*/
     ))
-    ->finder($finder);
+    ->setFinder($finder);
