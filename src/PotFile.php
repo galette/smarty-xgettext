@@ -65,7 +65,7 @@ class PotFile
     {
         $this->loader->loadTags(
             $this->getTags($file->getPathname()),
-            $file->getRelativePath()
+            $file->getPathname()
         );
     }
 
