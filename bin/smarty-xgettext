@@ -45,6 +45,6 @@ if (!$loader()) {
     );
 }
 
-$app = new Application('Smarty xgettext', '1.1.0');
+$app = new Application('Smarty xgettext', '1.1.1');
 $app->setDefaultCommand('extract', true);
 $app->run();
