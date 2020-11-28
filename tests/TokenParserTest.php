@@ -22,7 +22,7 @@ class TokenParserTest extends TestCase
     /** @var TokenParser */
     private $tokenParser;
 
-    public function setUp()
+    public function setUp(): void
     {
         $smarty = new Smarty();
         $this->tokenParser = new TokenParser($smarty);
