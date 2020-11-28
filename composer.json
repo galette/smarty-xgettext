@@ -29,11 +29,11 @@
         ]
 	},
 	"require": {
-		"geekwright/po": "^1.0",
+		"geekwright/po": "^2.0",
 		"php": "^7.2 || ^7.4",
-		"smarty/smarty": "^3",
-		"symfony/console": "^3.2",
-		"symfony/finder": "^2.8|^3.0"
+		"smarty/smarty": "^3.1",
+		"symfony/console": "^5.1",
+		"symfony/finder": "^5.1"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "^8",
