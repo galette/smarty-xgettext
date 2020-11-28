@@ -1,0 +1,64 @@
+name: Linux
+
+on:
+  push:
+    branches:
+      - master
+      - galette
+      - develop
+      - 'feature/*'
+      - 'hotfix/*'
+      - 'release/*'
+  pull_request:
+
+jobs:
+  ubuntu-latest:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-versions: [ '7.3', '7.4', '8.0', '8.1' ]
+        coverage: [none]
+      fail-fast: false
+
+    name: PHP ${{ matrix.php-versions }} on ubuntu-latest
+
+    steps:
+      - name: PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          tools: composer
+          coverage: ${{ matrix.coverage }}
+
+      - name: Checkout plugin
+        uses: actions/checkout@v2
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: |
+          composer install --ignore-platform-reqs
+
+      - name: CS
+        run: |
+          vendor/bin/phpcs -n -p --standard=PSR12 ./src ./tests ./*.php ./bin
+
+      - name: Check missing symbols
+        run: |
+          composer require maglnet/composer-require-checker
+          vendor/bin/composer-require-checker check --config-file=.composer-require-checker.config.json
+        if: ${{ matrix.php-versions== '7.4' }}
+
+      - name: Unit tests
+        run: vendor/bin/phpunit

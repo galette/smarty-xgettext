@@ -1,43 +1,44 @@
 {
-	"name": "galette/smarty-xgettext",
-	"description": "Smarty xgettext features",
-	"homepage": "https://github.com/galette/smarty-xgettext",
-	"license": "BSD-3-Clause",
-	"authors": [
-		{
-			"name": "Elan Ruusamäe",
-			"email": "glen@pld-linux.org"
-		}, {
+    "name": "galette/smarty-xgettext",
+    "description": "Smarty xgettext features",
+    "homepage": "https://github.com/galette/smarty-xgettext",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Elan Ruusamäe",
+            "email": "glen@pld-linux.org"
+        },
+        {
             "name": "Johan Cwiklinski",
             "email": "trasher@x-tnd.be"
         }
-	],
-	"bin": [
-		"bin/smarty-xgettext"
-	],
-	"autoload": {
-		"psr-4": {
-			"SmartyGettext\\": "src"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"SmartyGettext\\Test\\": "tests"
-		},
+    ],
+    "bin": [
+        "bin/smarty-xgettext"
+    ],
+    "autoload": {
+        "psr-4": {
+            "SmartyGettext\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SmartyGettext\\Test\\": "tests"
+        },
         "files": [
             "function._T.php"
         ]
-	},
-	"require": {
-		"geekwright/po": "^2.0",
-		"php": "^7.2 || ^7.4",
-		"smarty/smarty": "^3.1",
-		"symfony/console": "^5.1",
-		"symfony/finder": "^5.1"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "^8",
-		"symfony/var-dumper": "^3.3",
-		"squizlabs/php_codesniffer": "^3.5"
-	}
+    },
+    "require": {
+        "geekwright/po": "^2.0",
+        "php": "^7.3 || ^8",
+        "smarty/smarty": "^3.1",
+        "symfony/console": "^5.1",
+        "symfony/finder": "^5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8 || ^9",
+        "symfony/var-dumper": "^3.3",
+        "squizlabs/php_codesniffer": "^3.5"
+    }
 }
