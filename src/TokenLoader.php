@@ -83,7 +83,7 @@ class TokenLoader extends PoInitSmarty
      *
      * @inheritdoc
      */
-    public function escapeForPo($string)
+    public function escapeForPo(string $string): string
     {
         // FIXME: is such strip needed anyway?
         if ($string[0] === '"' || $string[0] === "'") {
