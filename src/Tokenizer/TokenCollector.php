@@ -23,11 +23,13 @@ class TokenCollector extends Smarty_Internal_SmartyTemplateCompiler
 {
     /** @var array */
     private $tokens = array();
+    /** @var bool @var boolean */
+    private $with_modifier = false;
 
     /**
      * @return array
      */
-    public function getTokens()
+    public function getTokens(): array
     {
         return $this->tokens;
     }
@@ -37,15 +39,33 @@ class TokenCollector extends Smarty_Internal_SmartyTemplateCompiler
      */
     public function compileTag($tag, $args, $parameter = array())
     {
+        $validtag = true;
         $line = $this->parser->lex->taglineno;
 
-        $validtag = true;
+        //flag we're using a modifier.
+        if ($tag === 'private_modifier') {
+            $validtag = false;
+            //store value parameter if we're working on a modifier
+            if (!$this->isVariable($parameter['value'] ?? '')) {
+                $this->with_modifier = $parameter['value'];
+            }
+        } else {
+            //we get a modifier. Check if its value is contained in current one and replace it
+            if (
+                false !== $this->with_modifier
+                && isset($args[0]['string'])
+                && $this->with_modifier !== false
+                && false !== strpos(trim($args[0]['string'], '"'), $this->with_modifier)
+            ) {
+                $args[0]['string'] = $this->with_modifier;
+            }
+            $this->with_modifier = false;
+        }
+
         foreach ($args as $key => $argument) {
-            if (isset($argument['string'])) {
-                if (substr($argument['string'], 0, strlen('$_smarty_tpl')) === '$_smarty_tpl') {
-                    $validtag = false;
-                    continue;
-                }
+            if (isset($argument['string']) && $this->isVariable($argument['string'])) {
+                $validtag = false;
+                continue;
             }
         }
 
@@ -65,5 +85,10 @@ class TokenCollector extends Smarty_Internal_SmartyTemplateCompiler
         $this->tokens[] = new Token\Text($line, $text);
 
         return parent::processText($text);
+    }
+
+    public function isVariable($value): bool
+    {
+        return (strpos($value, '$_smarty_tpl') === 0);
     }
 }

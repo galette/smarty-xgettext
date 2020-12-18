@@ -53,6 +53,13 @@ class TokenParserTest extends TestCase
 
                     "{_T string='%member email' comment='%member will be replaced with members email address'}\n"
                 )
+            ),
+            array(
+                'smarty_modifiers.tpl',
+                array(
+
+                    "{_T string='My escape'd text!' }\n"
+                )
             )
         );
     }
