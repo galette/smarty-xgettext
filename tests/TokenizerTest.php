@@ -45,6 +45,16 @@ class TokenizerTest extends TestCase
         $this->assertEquals('"%member will be replaced with members email address"', $tokens[0]->arguments[1]['comment']);
     }
 
+    public function testVariableModifiers()
+    {
+        $tokens = $this->getTokens(__DIR__ . '/data/smarty_modifiers.tpl');
+        $this->assertCount(1, $tokens);
+
+        $this->assertEquals('_T', $tokens[0]->name);
+        $this->assertEquals('"My escape\'d text!"', $tokens[0]->string);
+        $this->assertCount(0, $tokens[0]->arguments);
+    }
+
     /**
      * @param string $template
      * @return array

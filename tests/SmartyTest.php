@@ -74,6 +74,15 @@ class SmartyTest extends TestCase
                 array('issue_id' => 1, 'core' => array('rel_url' => '/')),
                 'View Note Details (Associated with Issue <a href="/view.php?id=%1">#%1</a>)',
             ),
+
+            /**
+             * smarty variables modifiers support
+             */
+            'translation_modifiers' => array(
+                'smarty_modifiers.tpl',
+                array(),
+                "My escape&#039;d text!"
+            )
         );
     }
 }
