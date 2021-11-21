@@ -4,6 +4,12 @@ When writing entries, refer to [Keep a CHANGELOG](http://keepachangelog.com/) fo
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.3] - 2021-11-21
+
+- Handle no domain case
+
+[1.2.2]: https://github.com/galette/smarty-xgettext/compare/1.2.2...1.2.3
+
 ## [1.2.2] - 2021-11-21
 
 - Support for domain restriction
