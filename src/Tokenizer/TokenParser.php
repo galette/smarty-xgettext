@@ -58,8 +58,12 @@ class TokenParser
             $previous = $i > 0 ? $tokens[$i - 1] : null;
             //check domain for exclusion
             if ($domain !== null) {
-                foreach ($token->arguments as $argument) {
-                    if (isset($argument['domain']) && $argument['domain'] != '"' . $domain . '"') {
+                $arguments = $token->arguments;
+                if (!count($arguments)) {
+                    continue 1;
+                }
+                foreach ($arguments as $argument) {
+                    if (!isset($argument['domain']) || isset($argument['domain']) && $argument['domain'] != '"' . $domain . '"') {
                         continue 2;
                     }
                 }
