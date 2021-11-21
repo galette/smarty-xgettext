@@ -58,7 +58,7 @@ class TokenizerTest extends TestCase
     public function testDomains()
     {
         $tokens = $this->getTokens(__DIR__ . '/data/restrict_domain.tpl');
-        $this->assertCount(3, $tokens);
+        $this->assertCount(4, $tokens);
 
         $this->assertEquals('_T', $tokens[0]->name);
         $this->assertEquals('"A string with a domain"', $tokens[0]->string);

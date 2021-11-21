@@ -57,17 +57,22 @@ class TokenParser
         foreach ($tokens as $i => $token) {
             $previous = $i > 0 ? $tokens[$i - 1] : null;
             //check domain for exclusion
+            $accepted = $domain === null;
             if ($domain !== null) {
+                $accepted = false; //do not accept per default when restricting on a domain
                 $arguments = $token->arguments;
-                if (!count($arguments)) {
-                    continue 1;
-                }
                 foreach ($arguments as $argument) {
-                    if (!isset($argument['domain']) || isset($argument['domain']) && $argument['domain'] != '"' . $domain . '"') {
-                        continue 2;
+                    if (isset($argument['domain']) && $argument['domain'] == '"' . $domain . '"') {
+                        $accepted = true;
+                        break;
                     }
                 }
             }
+
+            if (!$accepted) {
+                continue;
+            }
+
             if ($token instanceof Token\Tag && $token->name === '_T') {
                 $tags[] = new TranslateTag($token->string, $token->arguments, $token->line);
                 $topen = $token;

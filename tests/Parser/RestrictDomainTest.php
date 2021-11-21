@@ -32,6 +32,9 @@ class RestrictDomainTest extends TestCase
             ], [
                 'domain' => 'pluralized',
                 'string' => 'String|Strings'
+            ], [
+                'domain' => 'maps',
+                'string' => 'Map data (c)'
             ]
         ];
     }
