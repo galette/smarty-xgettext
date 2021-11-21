@@ -6,10 +6,11 @@ This utility will scan templates for `{_T string=""}` placeholders for translati
 
 Features:
 * scan files and directories recursively,
-* inlude original string location,
+* include original string location,
 * supports plurals `{_T string="singular" plural="plural"}`,
 * supports contexts `{_T string="string" context="mycontext"}`,
 * supports comments `{_T string="string" comment="Explanation"}`
+* supports domains `{_T string="string" domain="mydomain""}`, `{_T string="singular" plural="plural" domain="mydomain}`, ...
 
 Usage:
 

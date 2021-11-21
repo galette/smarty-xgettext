@@ -31,27 +31,39 @@ class TokenParser
      * Get translate tags from $templateFile
      *
      * @param string $templateFile
+     * @param string|null $domain
+     *
      * @return TranslateTag[]
      */
-    public function getTranslateTags($templateFile)
+    public function getTranslateTags($templateFile, string $domain = null)
     {
         $tokens = $this->tokenizer->getTokens($templateFile);
 
-        return $this->processTokens($tokens);
+        return $this->processTokens($tokens, $domain);
     }
 
     /**
      * Process tokens into TranslateTag objects
      *
      * @param array $tokens
+     * @param string|null $domain
+     *
      * @return TranslateTag[]
      */
-    private function processTokens($tokens)
+    private function processTokens($tokens, $domain = null)
     {
         $tags = array();
         $topen = null;
         foreach ($tokens as $i => $token) {
             $previous = $i > 0 ? $tokens[$i - 1] : null;
+            //check domain for exclusion
+            if ($domain !== null) {
+                foreach ($token->arguments as $argument) {
+                    if (isset($argument['domain']) && $argument['domain'] != '"' . $domain . '"') {
+                        continue 2;
+                    }
+                }
+            }
             if ($token instanceof Token\Tag && $token->name === '_T') {
                 $tags[] = new TranslateTag($token->string, $token->arguments, $token->line);
                 $topen = $token;

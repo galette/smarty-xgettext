@@ -53,14 +53,18 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * @param string $template
      * @param Callable $cb
+     * @param string|null $domain
      * @return PotFile
      */
-    protected function parseTemplate($template, $cb = null)
+    protected function parseTemplate($template, $cb = null, string $domain = null)
     {
         $filename = __DIR__ . '/data/' . $template;
 
         $file = new SplFileInfo($filename, $template, $template);
         $p = new PotFile();
+        if ($domain !== null) {
+            $p->setDomain($domain);
+        }
         if ($cb) {
             $cb($p);
         }

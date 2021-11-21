@@ -55,6 +55,28 @@ class TokenizerTest extends TestCase
         $this->assertCount(0, $tokens[0]->arguments);
     }
 
+    public function testDomains()
+    {
+        $tokens = $this->getTokens(__DIR__ . '/data/restrict_domain.tpl');
+        $this->assertCount(3, $tokens);
+
+        $this->assertEquals('_T', $tokens[0]->name);
+        $this->assertEquals('"A string with a domain"', $tokens[0]->string);
+        $this->assertCount(1, $tokens[0]->arguments);
+        $this->assertEquals(['domain' => '"galette"'], $tokens[0]->arguments[1]);
+
+        $this->assertEquals('_T', $tokens[1]->name);
+        $this->assertEquals('"Another string with a domain"', $tokens[1]->string);
+        $this->assertCount(1, $tokens[1]->arguments);
+        $this->assertEquals(['domain' => '"auto"'], $tokens[1]->arguments[1]);
+
+        $this->assertEquals('_T', $tokens[2]->name);
+        $this->assertEquals('"String"', $tokens[2]->string);
+        $this->assertCount(2, $tokens[2]->arguments);
+        $this->assertEquals(['plural' => '"Strings"'], $tokens[2]->arguments[1]);
+        $this->assertEquals(['domain' => '"pluralized"'], $tokens[2]->arguments[2]);
+    }
+
     /**
      * @param string $template
      * @return array
