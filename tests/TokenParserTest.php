@@ -64,7 +64,8 @@ class TokenParserTest extends TestCase
                 array(
                     "{_T string='A string with a domain' domain='galette'}\n",
                     "{_T string='Another string with a domain' domain='auto'}\n",
-                    "{_T string='String' plural='Strings' domain='pluralized'}\n"
+                    "{_T string='String' plural='Strings' domain='pluralized'}\n",
+                    "{_T string='Map data (c)' domain='maps' escape='js'}\n"
                 )
             )
         );
