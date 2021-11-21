@@ -50,15 +50,21 @@ class TokenParserTest extends TestCase
             array(
                 'comments.tpl',
                 array(
-
                     "{_T string='%member email' comment='%member will be replaced with members email address'}\n"
                 )
             ),
             array(
                 'smarty_modifiers.tpl',
                 array(
-
                     "{_T string='My escape'd text!' }\n"
+                )
+            ),
+            array(
+                'restrict_domain.tpl',
+                array(
+                    "{_T string='A string with a domain' domain='galette'}\n",
+                    "{_T string='Another string with a domain' domain='auto'}\n",
+                    "{_T string='String' plural='Strings' domain='pluralized'}\n"
                 )
             )
         );

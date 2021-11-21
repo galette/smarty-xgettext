@@ -36,6 +36,7 @@ class Extract extends Command
             ->addArgument('arguments', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Files/Directories to scan')
             ->addOption('--output', '-o', InputOption::VALUE_REQUIRED, 'Output filename')
             ->addOption('--delimiters', '-d', InputOption::VALUE_REQUIRED, 'Set Smarty delimiters')
+            ->addOption('--domain', '-D', InputOption::VALUE_REQUIRED, 'Restrict to specified domain')
             ->setHelp(
                 <<<EOT
 <info>%command.full_name% -o template.pot <filename or directory> <file2> <..></info>
@@ -75,6 +76,11 @@ EOT
         if ($delimiters) {
             list($leftDelimiter, $rightDelimiter) = explode(',', $delimiters);
             $potFile->setDelimiters($leftDelimiter, $rightDelimiter);
+        }
+
+        $domain = $input->getOption('domain');
+        if ($domain) {
+            $potFile->setDomain($domain);
         }
 
         foreach ($templateFiles as $file) {

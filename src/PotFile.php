@@ -36,6 +36,9 @@ class PotFile
     /** @var PoFile */
     private $file;
 
+    /** @var string */
+    private $domain;
+
     public function __construct()
     {
         $this->smarty = new Smarty();
@@ -53,7 +56,7 @@ class PotFile
      */
     public function getTags($filename)
     {
-        return $this->parser->getTranslateTags($filename);
+        return $this->parser->getTranslateTags($filename, $this->getDomain());
     }
 
     /**
@@ -121,5 +124,28 @@ class PotFile
     public function getPoFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set domain
+     *
+     * @param string $domain
+     *
+     * @return $this
+     */
+    public function setDomain(string $domain): self
+    {
+        $this->domain = $domain;
+        return $this;
+    }
+
+    /**
+     * Get current domain
+     *
+     * @return string
+     */
+    public function getDomain(): ?string
+    {
+        return $this->domain;
     }
 }
